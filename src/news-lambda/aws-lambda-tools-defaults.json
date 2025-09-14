@@ -1,0 +1,14 @@
+{
+  "Information": [
+    "dotnet lambda help",
+    "dotnet lambda deploy-function news-lambda"
+  ],
+  "profile": "PowerUserAccess-814478342784",
+  "region": "ap-southeast-1",
+  "configuration": "Release",
+  "function-architecture": "arm64",
+  "function-runtime": "dotnet8",
+  "function-memory-size": 512,
+  "function-timeout": 90,
+  "function-handler": "news-lambda::news_lambda.Function::FunctionHandler"
+}
