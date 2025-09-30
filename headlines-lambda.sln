@@ -6,9 +6,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0C88DD14-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{827E0CD3-B72D-47B6-A68D-7590B98EB39B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "news-lambda.Tests", "test\news-lambda.Tests\news-lambda.Tests.csproj", "{A9796A02-9C7D-715B-A979-7DAAEDD72DC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "headlines-lambda.Tests", "test\headlines-lambda.Tests\headlines-lambda.Tests.csproj", "{A9796A02-9C7D-715B-A979-7DAAEDD72DC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "news-lambda", "src\news-lambda\news-lambda.csproj", "{53A5B49E-F0D6-C8D6-122C-E458F53344E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "headlines-lambda", "src\headlines-lambda\headlines-lambda.csproj", "{53A5B49E-F0D6-C8D6-122C-E458F53344E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

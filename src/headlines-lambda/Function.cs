@@ -5,15 +5,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
 using Options;
+using Serilog;
 using Services;
 using Utilities;
 
-// Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(
   typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer)
 )]
 
-namespace news_lambda;
+namespace headlines_lambda;
 
 public class Function
 {
@@ -23,11 +23,15 @@ public class Function
   {
     var services = new ServiceCollection();
 
-    services.AddLogging(builder => { });
     var configuration = new ConfigurationBuilder()
       .SetBasePath(Directory.GetCurrentDirectory())
       .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
       .Build();
+    services.AddSerilog(
+      (services, lc) =>
+        lc.ReadFrom.Configuration(configuration).ReadFrom.Services(services).Enrich.FromLogContext()
+    );
+    services.AddLogging(builder => { });
 
     services.Configure<NewsReportOptions>(configuration.GetSection("NewsReportOptions"));
     services.Configure<DailyNewsOptions>(configuration.GetSection("DailyNewsOptions"));
@@ -37,7 +41,6 @@ public class Function
     services.AddSingleton<ITelegramService, TelegramService>();
     services.AddSingleton<GeminiService>();
     services.AddHttpClient<NewsService>();
-    // Finally, build the service provider.
     _serviceProvider = services.BuildServiceProvider();
   }
 
@@ -50,6 +53,6 @@ public class Function
   public async Task FunctionHandler(Stream stream, ILambdaContext context)
   {
     NewsService newsService = _serviceProvider.GetRequiredService<NewsService>();
-    await newsService.SendNews();
+    await newsService.FetchNews();
   }
 }

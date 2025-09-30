@@ -1,0 +1,1 @@
+cd src/headlines-lambda && dotnet lambda deploy-function headlines-lambda

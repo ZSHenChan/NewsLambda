@@ -1,7 +1,7 @@
 {
   "Information": [
     "dotnet lambda help",
-    "dotnet lambda deploy-function news-lambda"
+    "dotnet lambda deploy-function headlines-lambda"
   ],
   "profile": "PowerUserAccess-814478342784",
   "region": "ap-southeast-1",
@@ -9,6 +9,6 @@
   "function-architecture": "arm64",
   "function-runtime": "dotnet8",
   "function-memory-size": 512,
-  "function-timeout": 90,
-  "function-handler": "news-lambda::news_lambda.Function::FunctionHandler"
+  "function-timeout": 120,
+  "function-handler": "headlines-lambda::headlines_lambda.Function::FunctionHandler"
 }

@@ -3,12 +3,12 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.TestUtilities;
 using Xunit;
 
-namespace news_lambda.Tests;
+namespace headlines_lambda.Tests;
 
 public class FunctionTest
 {
   [Fact]
-  public async void TestToUpperFunction()
+  public async Task TestFunction()
   {
     var inputData = "hello world";
     var inputStream = new MemoryStream(Encoding.UTF8.GetBytes(inputData));
